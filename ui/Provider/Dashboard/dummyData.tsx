@@ -1,0 +1,66 @@
+import { Booking, ProviderStats } from "@/types/ProviderDashboardType";
+
+export const DUMMY_BOOKINGS: Booking[] = [
+  {
+    id: "b1f8c2a9",
+    customer_name: "Priya Sharma",
+    event_type: "Wedding Reception",
+    event_date: "2026-04-15",
+    event_time: "18:00",
+    location: "Sector 14, Gurugram",
+    total_amount: 25000,
+    booking_status: "confirmed",
+    call_confirmed: true,
+  },
+  {
+    id: "b2d9f3b4",
+    customer_name: "Rahul Verma",
+    event_type: "Birthday Party",
+    event_date: "2026-04-20",
+    event_time: "20:00",
+    location: "DLF Phase 3, Gurugram",
+    total_amount: 40000,
+    booking_status: "token_paid",
+    call_confirmed: false,
+  },
+  {
+    id: "b3a7e1c6",
+    customer_name: "Anita Gupta",
+    event_type: "Corporate Event",
+    event_date: "2026-04-02",
+    event_time: "17:00",
+    location: "Cyber City, Gurugram",
+    total_amount: 18000,
+    booking_status: "completed",
+    call_confirmed: true,
+  },
+  {
+    id: "b4c8d7f1",
+    customer_name: "Vikram Singh",
+    event_type: "Outdoor Concert",
+    event_date: "2026-03-28",
+    event_time: "19:00",
+    location: "Sohna Road, Gurugram",
+    total_amount: 22000,
+    booking_status: "in_progress",
+    call_confirmed: true,
+  },
+  {
+    id: "b5e9g2h3",
+    customer_name: "Meera Patel",
+    event_type: "Sangeet Ceremony",
+    event_date: "2026-04-25",
+    event_time: "21:00",
+    location: "Sushant Lok, Gurugram",
+    total_amount: 50000,
+    booking_status: "cancelled",
+    call_confirmed: false,
+  },
+];
+
+export const DUMMY_STATS: ProviderStats = {
+  total_bookings: 47,
+  average_rating: 4.7,
+  total_earnings: 135000,
+  pending_amount: 22500,
+};

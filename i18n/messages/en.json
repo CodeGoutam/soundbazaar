@@ -1,0 +1,22 @@
+{
+  "auth": {
+    "signin": "Sign In",
+    "signup": "Create Account",
+    "mobile": "Mobile Number",
+    "password": "Password",
+    "sendOtp": "Send OTP",
+    "verifyOtp": "Verify OTP",
+    "enterOtp": "Enter the OTP sent to",
+    "createPassword": "Create Password",
+    "signinBtn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?"
+  },
+  "nav": {
+    "home": "Home",
+    "browse": "Browse",
+    "bookings": "My Bookings",
+    "dashboard": "Dashboard",
+    "logout": "Logout"
+  }
+}

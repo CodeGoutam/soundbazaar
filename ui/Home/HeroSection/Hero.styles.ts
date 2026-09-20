@@ -1,0 +1,143 @@
+import { SxProps, Theme } from "@mui/material";
+
+export const heroStyles: Record<string, SxProps<Theme>> = {
+  hr: {
+    position: "relative",
+    minHeight: "calc(100vh - 64px)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "var(--parchment, #F9F7F4)",
+    overflow: "hidden",
+  },
+  hrAmbient: {
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    background:
+      "radial-gradient(ellipse 65% 55% at 15% 85%, rgba(196,137,58,0.07) 0%, transparent 60%)," +
+      "radial-gradient(ellipse 50% 45% at 85% 15%, rgba(196,137,58,0.05) 0%, transparent 55%)",
+  },
+  hrGrid: {
+    position: "absolute",
+    inset: 0,
+    pointerEvents: "none",
+    opacity: 0.45,
+    backgroundImage:
+      "radial-gradient(circle, rgba(196,137,58,0.18) 1px, transparent 1px)",
+    backgroundSize: "32px 32px",
+    maskImage:
+      "radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%)",
+  },
+
+  hrContent: {
+    position: "relative",
+    zIndex: 10,
+    textAlign: "center",
+    p: { xs: 3, sm: 6 },
+    maxWidth: 820,
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "28px",
+  },
+  hrBadge: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 0.5,
+    fontSize: "0.7rem",
+    fontWeight: 500,
+    letterSpacing: "0.2em",
+    textTransform: "uppercase",
+    color: "var(--amber, #C4893A)",
+    backgroundColor: "var(--amber-dim, rgba(196,137,58,0.09))",
+    border: "1px solid var(--amber-border, rgba(196,137,58,0.22))",
+    px: 1.5,
+    py: 0.5,
+    borderRadius: 20,
+  },
+
+  hrTitle: {
+    fontFamily: "'Fraunces', Georgia, serif",
+    fontWeight: 700,
+    lineHeight: 1,
+    letterSpacing: "-0.03em",
+    color: "var(--ink, #18181B)",
+    fontSize: { xs: "2.5rem", sm: "clamp(3rem, 8vw, 5.8rem)" },
+  },
+  hrSub: {
+    fontSize: { xs: "0.9rem", sm: "clamp(0.95rem,1.8vw,1.1rem)" },
+    fontWeight: 300,
+    color: "var(--muted, #7A756F)",
+    maxWidth: 480,
+    mx: "auto",
+
+    lineHeight: 1.8,
+  },
+  hrActions: {
+    display: "flex",
+    gap: 2,
+    justifyContent: "center",
+    flexWrap: "wrap",
+  },
+  hrStats: {
+    display: "flex",
+    gap: 0,
+    justifyContent: "center",
+    backgroundColor: "var(--warm-white, #FDFCFB)",
+    border: "1px solid var(--stone, #E8E4DE)",
+    borderRadius: 2,
+    overflow: "hidden",
+    flexDirection: { xs: "column", sm: "row" },
+  },
+  hrStat: {
+    px: 3,
+    py: 2,
+    textAlign: "center",
+    borderRight: { xs: "none", sm: "1px solid var(--stone, #E8E4DE)" },
+    borderBottom: { xs: "1px solid var(--stone, #E8E4DE)", sm: "none" },
+    "&:last-child": { borderRight: "none", borderBottom: "none" },
+  },
+  hrStatNum: {
+    fontFamily: "'Fraunces', Georgia, serif",
+    fontSize: 24,
+    fontWeight: 600,
+    color: "var(--ink, #18181B)",
+    display: "block",
+    lineHeight: 1,
+    letterSpacing: "-0.03em",
+  },
+  hrStatLabel: {
+    fontSize: "0.65rem",
+    letterSpacing: "0.16em",
+    textTransform: "uppercase",
+    color: "var(--muted-light, #B0AAA3)",
+    mt: 0.5,
+    display: "block",
+  },
+  hrScroll: {
+    position: "absolute",
+    bottom: 32,
+    left: "50%",
+    transform: "translateX(-50%)",
+    display: { xs: "none", sm: "flex" },
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 0.5,
+    zIndex: 10,
+  },
+  hrScrollLine: {
+    width: 1,
+    height: 40,
+    background:
+      "linear-gradient(to bottom, var(--amber, #C4893A), transparent)",
+  },
+  hrScrollLabel: {
+    fontSize: "0.6rem",
+    letterSpacing: "0.18em",
+    textTransform: "uppercase",
+    color: "var(--muted-light, #B0AAA3)",
+  },
+};

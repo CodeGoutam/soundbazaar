@@ -1,0 +1,22 @@
+{
+  "auth": {
+    "signin": "साइन इन करें",
+    "signup": "अकाउंट बनाएं",
+    "mobile": "मोबाइल नंबर",
+    "password": "पासवर्ड",
+    "sendOtp": "OTP भेजें",
+    "verifyOtp": "OTP सत्यापित करें",
+    "enterOtp": "इस नंबर पर भेजा गया OTP दर्ज करें",
+    "createPassword": "पासवर्ड बनाएं",
+    "signinBtn": "लॉग इन करें",
+    "noAccount": "अकाउंट नहीं है?",
+    "haveAccount": "पहले से अकाउंट है?"
+  },
+  "nav": {
+    "home": "होम",
+    "browse": "खोजें",
+    "bookings": "मेरी बुकिंग",
+    "dashboard": "डैशबोर्ड",
+    "logout": "लॉग आउट"
+  }
+}
