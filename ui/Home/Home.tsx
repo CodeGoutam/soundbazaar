@@ -10,7 +10,7 @@ import {
   ProviderSection,
 } from "./ProviderSection/ProviderSection";
 
-export function Home() {
+export function Home({ locale }: { locale: string }) {
   return (
     <div className="h-root">
       <HeroSection />
@@ -19,8 +19,8 @@ export function Home() {
       <FeaturesSection />
       <HowItWorksSection />
       <TestimonialsSection />
-      <ProviderSection />
-      <FinalCtaSection />
+      <ProviderSection locale={locale} />
+      <FinalCtaSection locale={locale} />
       <Footer />
     </div>
   );

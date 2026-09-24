@@ -84,10 +84,12 @@ export default function OtpInput({ value, onChange, hasError }: OtpInputProps) {
           }}
           sx={[
             styles.otpBox,
-            // hasError && {
-            //   borderColor: "#EF4444",
-            //   boxShadow: "0 0 0 3px rgba(239,68,68,0.1)",
-            // },
+            hasError
+              ? {
+                  borderColor: "#EF4444",
+                  boxShadow: "0 0 0 3px rgba(239,68,68,0.12)",
+                }
+              : {},
           ]}
         />
       ))}
