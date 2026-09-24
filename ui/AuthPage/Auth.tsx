@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter, useParams } from "next/navigation";
 import {
   Box,
   Typography,
@@ -9,6 +8,7 @@ import {
   Button,
   CircularProgress,
 } from "@mui/material";
+import { BusinessCenterOutlined, PersonOutline } from "@mui/icons-material";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -56,9 +56,6 @@ const BENEFITS = {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function AuthPage() {
-  const router = useRouter();
-  const { locale } = useParams() as { locale: string };
-
   const [userType, setUserType] = useState<UserType>("customer");
   const [step, setStep] = useState<Step>("mobile");
   const [mobile, setMobile] = useState("");
@@ -205,6 +202,15 @@ export default function AuthPage() {
     <Box sx={styles.formWrap}>
       {/* Header — same for signin and signup, backend handles the difference */}
       <Box sx={styles.formHead}>
+        <Box sx={styles.progress}>
+          <Typography sx={styles.progressText}>
+            {step === "mobile" ? "Secure access" : "Almost there"}
+          </Typography>
+          <Box sx={styles.progressDots} aria-label={`Step ${step === "mobile" ? 1 : 2} of 2`}>
+            <Box sx={[styles.progressDot, styles.progressDotActive]} />
+            <Box sx={[styles.progressDot, step === "otp" && styles.progressDotActive]} />
+          </Box>
+        </Box>
         <Typography sx={styles.formLabel}>
           {step === "mobile" ? "Welcome" : "Verify mobile"}
         </Typography>
@@ -246,6 +252,13 @@ export default function AuthPage() {
             {(["customer", "provider"] as UserType[]).map((t) => (
               <Button
                 key={t}
+                startIcon={
+                  t === "customer" ? (
+                    <PersonOutline fontSize="small" />
+                  ) : (
+                    <BusinessCenterOutlined fontSize="small" />
+                  )
+                }
                 onClick={() => {
                   setUserType(t);
                   setError("");
@@ -255,10 +268,15 @@ export default function AuthPage() {
                   userType === t && styles.toggleBtnActive,
                 ]}
               >
-                {t === "customer" ? "🎉 Customer" : "🎵 Provider"}
+                {t === "customer" ? "Customer" : "Provider"}
               </Button>
             ))}
           </Box>
+          <Typography sx={styles.roleHint}>
+            {userType === "customer"
+              ? "I want to find and book sound services for an event."
+              : "I want to list my sound services and receive bookings."}
+          </Typography>
 
           <Box
             component="form"
@@ -270,18 +288,49 @@ export default function AuthPage() {
               control={mobileForm.control}
               render={({ field, fieldState }) => (
                 <Box sx={styles.mobileWrap}>
-                  <Box sx={styles.mobilePrefix}>+91</Box>
+                  <Box sx={styles.mobilePrefix}>🇮🇳 +91</Box>
                   <TextField
                     {...field}
                     fullWidth
                     size="small"
                     label="Mobile number"
                     type="tel"
-                    placeholder="9876543210"
+                    placeholder="Enter 10-digit number"
                     error={!!fieldState.error}
                     helperText={fieldState.error?.message}
-                    inputProps={{ maxLength: 10 }}
+                    inputProps={{ maxLength: 10, inputMode: "numeric" }}
                     autoFocus
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        color: "#18181B",
+                        backgroundColor: "#FFFFFF",
+                        borderRadius: "8px",
+                        "& fieldset": {
+                          borderColor: "#D4D4D8",
+                        },
+                        "&:hover fieldset": {
+                          borderColor: "#A1A1AA",
+                        },
+                        "&.Mui-focused fieldset": {
+                          borderColor: "#C4893A",
+                          borderWidth: "1.5px",
+                        },
+                      },
+                      "& .MuiInputLabel-root": {
+                        color: "#71717A",
+                        "&.Mui-focused": {
+                          color: "#C4893A",
+                        },
+                      },
+                      "& .MuiInputBase-input": {
+                        fontSize: "0.92rem",
+                        fontWeight: 500,
+                      },
+                      "& .MuiInputBase-input::placeholder": {
+                        color: "#A1A1AA",
+                        opacity: 1,
+                      },
+                    }}
                   />
                 </Box>
               )}
@@ -291,10 +340,21 @@ export default function AuthPage() {
               {loading ? (
                 <CircularProgress size={18} color="inherit" />
               ) : (
-                "Send OTP →"
+                "Continue with Mobile →"
               )}
             </Button>
           </Box>
+          <Typography sx={styles.footerText}>
+            By continuing, you agree to SoundBazaar's{" "}
+            <Box component="span" sx={styles.footerLink}>
+              Terms of Service
+            </Box>{" "}
+            and{" "}
+            <Box component="span" sx={styles.footerLink}>
+              Privacy Policy
+            </Box>
+            .
+          </Typography>
         </>
       )}
 
@@ -315,8 +375,8 @@ export default function AuthPage() {
           />
 
           <Box sx={styles.resendRow}>
-            <Typography sx={{ fontSize: "0.8rem", color: "#B0AAA3" }}>
-              {canResend ? "Didn't receive it?" : `Resend in ${resendTimer}s`}
+            <Typography sx={{ fontSize: "0.8rem", color: "#71717A" }}>
+              {canResend ? "Didn't receive code?" : `Resend code in ${resendTimer}s`}
             </Typography>
             <Box
               component="button"
@@ -347,13 +407,15 @@ export default function AuthPage() {
               setOtpValue("");
             }}
             sx={{
-              color: "#7A756F",
-              fontSize: "0.8rem",
+              color: "#71717A",
+              fontSize: "0.82rem",
               textTransform: "none",
-              mt: "-0.5rem",
+              fontWeight: 500,
+              mt: "-0.25rem",
+              "&:hover": { color: "#18181B", bgcolor: "transparent" },
             }}
           >
-            ← Change number
+            ← Change phone number
           </Button>
         </>
       )}

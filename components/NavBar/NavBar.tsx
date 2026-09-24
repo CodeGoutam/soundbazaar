@@ -36,9 +36,7 @@ export function Navbar() {
       <Link href={`/${locale}`} style={{ textDecoration: "none" }}>
         <Box sx={styles.logo}>
           <Box sx={styles.logoMark}>
-            <Box component="svg" viewBox="0 0 16 16" sx={styles.logoSvg}>
-              <LogoIcon size={18} />
-            </Box>
+            <LogoIcon size={18} />
           </Box>
           <Typography sx={styles.logoText}>
             Sound<span>Bazaar</span>

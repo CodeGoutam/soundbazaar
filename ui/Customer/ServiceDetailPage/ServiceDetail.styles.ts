@@ -29,6 +29,7 @@ export const detailStyles = {
 
   // ── Content wrapper ──────────────────────────────────────────────────────────
   contentWrap: {
+    width: "100%",
     maxWidth: "1400px",
     mx: "auto",
     px: { xs: "1rem", md: "2.5rem" },
@@ -37,6 +38,7 @@ export const detailStyles = {
     gridTemplateColumns: { xs: "1fr", lg: "1fr 360px" },
     gap: { xs: "2rem", lg: "3rem" },
     alignItems: "flex-start",
+    boxSizing: "border-box",
   },
 
   // ── Left column ──────────────────────────────────────────────────────────────

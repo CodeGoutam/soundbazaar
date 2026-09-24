@@ -1,13 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import { Box, Typography, Button } from "@mui/material";
 import { styles } from "./ProviderSection.styles";
-import { useParams } from "next/navigation";
 import TrendIcon from "@/components/Icons/TrendIcon";
 import MoneyIcon from "@/components/Icons/MoneyIcon";
 import ChartIcon from "@/components/Icons/BarCharIcon";
-import { Route } from "next";
+import type { Route } from "next";
 
 const PERKS = [
   {
@@ -29,8 +26,7 @@ const PERKS = [
 
 // ================= PROVIDER SECTION =================
 
-export function ProviderSection() {
-  const locale = useParams()?.locale || "en";
+export function ProviderSection({ locale }: { locale: string }) {
   return (
     <Box sx={styles.pvSection} id="providers">
       <Box sx={styles.pvInner}>
@@ -79,9 +75,7 @@ export function ProviderSection() {
 
 // ================= FINAL CTA =================
 
-export function FinalCtaSection() {
-  const locale = useParams()?.locale || "en";
-
+export function FinalCtaSection({ locale }: { locale: string }) {
   return (
     <Box sx={styles.fcSection}>
       <Box sx={styles.fcInner}>

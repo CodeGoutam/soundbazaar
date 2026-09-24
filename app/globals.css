@@ -54,3 +54,79 @@ h6 {
   font-weight: 700;
   line-height: 1.2;
 }
+
+.route-loading {
+  display: flex;
+  min-height: 12rem;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.route-loading__content {
+  width: min(100%, 72rem);
+}
+
+.route-loading__line,
+.route-loading__card {
+  display: block;
+  background: linear-gradient(90deg, #f1eee9 25%, #faf8f5 50%, #f1eee9 75%);
+  background-size: 200% 100%;
+  animation: route-loading-shimmer 1.25s ease-in-out infinite;
+}
+
+.route-loading__line {
+  height: 0.9rem;
+  margin-bottom: 0.75rem;
+  border-radius: 999px;
+}
+
+.route-loading__line--title {
+  width: min(22rem, 72%);
+  height: 2rem;
+}
+
+.route-loading__line--text {
+  width: min(36rem, 100%);
+}
+
+.route-loading__line--short {
+  width: min(16rem, 52%);
+}
+
+.route-loading__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.route-loading__card {
+  min-height: 12rem;
+  border-radius: 0.75rem;
+}
+
+.route-loading--auth .route-loading__content {
+  max-width: 28rem;
+}
+
+.route-loading--auth .route-loading__cards {
+  grid-template-columns: 1fr;
+}
+
+.route-loading--dashboard .route-loading__cards {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@keyframes route-loading-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .route-loading__cards,
+  .route-loading--dashboard .route-loading__cards {
+    grid-template-columns: 1fr;
+  }
+}
