@@ -10,15 +10,60 @@ export function SkeletonCard() {
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
+        boxShadow: "0 1px 3px rgba(24,24,27,0.04)",
       }}
     >
-      {/* Image placeholder */}
-      <Skeleton
-        variant="rectangular"
-        height={135}
-        animation="wave"
-        sx={{ bgcolor: "#F0ECE6" }}
-      />
+      {/* Image placeholder with badges */}
+      <Box sx={{ position: "relative", height: { xs: 110, sm: 135, md: 150 } }}>
+        <Skeleton
+          variant="rectangular"
+          width="100%"
+          height="100%"
+          animation="wave"
+          sx={{ bgcolor: "#F0ECE6" }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            top: "0.4rem",
+            left: "0.4rem",
+            display: "flex",
+            gap: "0.25rem",
+          }}
+        >
+          <Skeleton
+            variant="rounded"
+            width={75}
+            height={20}
+            animation="wave"
+            sx={{ bgcolor: "rgba(255,255,255,0.7)" }}
+          />
+        </Box>
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: "0.4rem",
+            left: "0.4rem",
+            right: "0.4rem",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Skeleton
+            width={70}
+            height={14}
+            animation="wave"
+            sx={{ bgcolor: "rgba(255,255,255,0.6)" }}
+          />
+          <Skeleton
+            width={45}
+            height={14}
+            animation="wave"
+            sx={{ bgcolor: "rgba(255,255,255,0.6)" }}
+          />
+        </Box>
+      </Box>
 
       {/* Body */}
       <Box
@@ -26,31 +71,20 @@ export function SkeletonCard() {
           p: "0.6rem 0.65rem",
           display: "flex",
           flexDirection: "column",
-          gap: "0.28rem",
+          gap: "0.35rem",
         }}
       >
-        {/* Provider / City row */}
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Skeleton width="45%" height={12} animation="wave" />
-          <Skeleton width="25%" height={12} animation="wave" />
-        </Box>
-
         {/* Title line */}
-        <Skeleton width="85%" height={16} animation="wave" />
+        <Skeleton width="88%" height={18} animation="wave" />
 
         {/* Spec chips */}
-        <Box sx={{ display: "flex", gap: "0.25rem", mt: "0.1rem" }}>
+        <Box sx={{ display: "flex", gap: "0.25rem", my: "0.1rem" }}>
           <Skeleton width={60} height={18} variant="rounded" animation="wave" />
-          <Skeleton width={45} height={18} variant="rounded" animation="wave" />
+          <Skeleton width={50} height={18} variant="rounded" animation="wave" />
         </Box>
 
         {/* Divider */}
-        <Skeleton
-          width="100%"
-          height={1}
-          animation={false}
-          sx={{ my: "0.15rem" }}
-        />
+        <Box sx={{ height: 1, bgcolor: "#EAE6DF", my: "0.2rem" }} />
 
         {/* Price + CTA */}
         <Box
@@ -61,12 +95,12 @@ export function SkeletonCard() {
           }}
         >
           <Box>
-            <Skeleton width={65} height={16} animation="wave" />
-            <Skeleton width={50} height={10} animation="wave" />
+            <Skeleton width={65} height={18} animation="wave" />
+            <Skeleton width={45} height={10} animation="wave" />
           </Box>
           <Skeleton
             variant="rounded"
-            width={52}
+            width={58}
             height={26}
             animation="wave"
             sx={{ borderRadius: "5px" }}

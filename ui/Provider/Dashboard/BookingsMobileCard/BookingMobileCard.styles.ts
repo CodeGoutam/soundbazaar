@@ -6,7 +6,7 @@ type MobileCardStyles = {
   eventType: SxProps<Theme>;
   eventMeta: SxProps<Theme>;
   location: SxProps<Theme>;
-  statusChip: (cfg: any) => SxProps<Theme>;
+  statusChip: (cfg: { bg?: string; color?: string }) => SxProps<Theme>;
   divider: SxProps<Theme>;
   footerBox: SxProps<Theme>;
   statsGroup: SxProps<Theme>;

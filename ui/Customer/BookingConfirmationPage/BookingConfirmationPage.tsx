@@ -38,7 +38,7 @@ export default function BookingConfirmationPage() {
   // Mocking status logic for now
   const booking = {
     ...DUMMY_BOOKING,
-    status: isSuccess ? "confirmed" : (searchParams.get("status") || "confirmed"),
+    status: isSuccess ? "confirmed" : searchParams.get("status") || "confirmed",
   };
 
   const getBannerConfig = () => {
@@ -134,7 +134,7 @@ export default function BookingConfirmationPage() {
   };
 
   const callProvider = () => {
-    window.location.href = `tel:${booking.provider.mobile.replace(/\s/g, "")}`;
+    window.location.assign(`tel:${booking.provider.mobile.replace(/\s/g, "")}`);
   };
 
   const whatsappProvider = () => {
@@ -153,19 +153,15 @@ export default function BookingConfirmationPage() {
         <Box sx={s.bannerGlow} />
 
         {/* Status icon */}
-        <Box sx={s.successRing(booking.status)}>
-          {banner.icon}
-        </Box>
+        <Box sx={s.successRing(booking.status)}>{banner.icon}</Box>
 
-        <Typography sx={s.bannerEyebrow(booking.status)}>{banner.eyebrow}</Typography>
-
-        <Typography sx={s.bannerTitle}>
-          {banner.title}
+        <Typography sx={s.bannerEyebrow(booking.status)}>
+          {banner.eyebrow}
         </Typography>
 
-        <Typography sx={s.bannerSub}>
-          {banner.sub}
-        </Typography>
+        <Typography sx={s.bannerTitle}>{banner.title}</Typography>
+
+        <Typography sx={s.bannerSub}>{banner.sub}</Typography>
 
         {/* Booking ID chip */}
         <Box sx={s.bookingIdChip}>

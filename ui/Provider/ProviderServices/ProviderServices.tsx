@@ -186,21 +186,83 @@ export default function ProviderServices() {
                   border: "1px solid #E8E4DE",
                   borderRadius: "12px",
                   overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
                 }}
               >
-                <Skeleton variant="rectangular" height={160} />
+                <Box sx={{ position: "relative" }}>
+                  <Skeleton
+                    variant="rectangular"
+                    height={160}
+                    animation="wave"
+                  />
+                  <Skeleton
+                    variant="rounded"
+                    width={60}
+                    height={22}
+                    animation="wave"
+                    sx={{
+                      position: "absolute",
+                      top: 12,
+                      right: 12,
+                      borderRadius: "20px",
+                    }}
+                  />
+                </Box>
                 <Box
                   sx={{
                     p: "1rem",
                     display: "flex",
                     flexDirection: "column",
-                    gap: "0.5rem",
+                    gap: "0.6rem",
                   }}
                 >
-                  <Skeleton width="65%" height={22} />
-                  <Skeleton width="90%" height={16} />
-                  <Skeleton width="75%" height={16} />
-                  <Skeleton width="45%" height={30} sx={{ mt: "0.25rem" }} />
+                  <Skeleton width="65%" height={22} animation="wave" />
+                  <Skeleton width="92%" height={14} animation="wave" />
+                  <Skeleton width="75%" height={14} animation="wave" />
+
+                  {/* Price row */}
+                  <Box sx={{ mt: "0.2rem" }}>
+                    <Skeleton width={90} height={24} animation="wave" />
+                    <Skeleton
+                      width={130}
+                      height={12}
+                      animation="wave"
+                      sx={{ mt: 0.5 }}
+                    />
+                  </Box>
+
+                  {/* Tags */}
+                  <Box sx={{ display: "flex", gap: "0.35rem" }}>
+                    <Skeleton
+                      variant="rounded"
+                      width={70}
+                      height={22}
+                      animation="wave"
+                    />
+                    <Skeleton
+                      variant="rounded"
+                      width={90}
+                      height={22}
+                      animation="wave"
+                    />
+                  </Box>
+
+                  {/* Action buttons */}
+                  <Box sx={{ display: "flex", gap: "0.5rem", mt: "0.5rem" }}>
+                    <Skeleton
+                      variant="rounded"
+                      width="50%"
+                      height={34}
+                      animation="wave"
+                    />
+                    <Skeleton
+                      variant="rounded"
+                      width="50%"
+                      height={34}
+                      animation="wave"
+                    />
+                  </Box>
                 </Box>
               </Box>
             ))}
@@ -236,7 +298,7 @@ export default function ProviderServices() {
                 key={service.id}
                 service={service}
                 onEdit={handleEdit}
-                onDelete={(id: any) =>
+                onDelete={(id: string) =>
                   setDeleteTarget(services.find((s) => s.id === id) ?? null)
                 }
                 onToggleActive={handleToggleActive}

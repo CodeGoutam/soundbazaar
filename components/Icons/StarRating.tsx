@@ -30,3 +30,5 @@ export const StarRating = React.memo(function ({ count }: { count: number }) {
     </Box>
   );
 });
+
+StarRating.displayName = "StarRating";

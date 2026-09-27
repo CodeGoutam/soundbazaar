@@ -296,7 +296,7 @@ export default function ProviderOnboardPage() {
                 href={`/${locale}/dashboard`}
                 sx={styles.skipBtn}
               >
-                Skip photos — I'll add them later
+                Skip photos — I&apos;ll add them later
               </Button>
             )}
           </Box>

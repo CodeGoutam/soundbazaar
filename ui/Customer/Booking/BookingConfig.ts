@@ -8,7 +8,8 @@ export const bookingSchema = z.object({
     .refine((d) => {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-      return new Date(d) >= today;
+      const selected = new Date(`${d}T00:00:00`);
+      return selected >= today;
     }, "Date cannot be in the past"),
   event_start_time: z.string().min(1, "Select a start time"),
   event_address: z.string().min(5, "Enter the full event address"),

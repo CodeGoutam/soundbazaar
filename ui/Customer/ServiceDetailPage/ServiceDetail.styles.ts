@@ -3,13 +3,20 @@ export const detailStyles = {
 
   // ── Back bar ────────────────────────────────────────────────────────────────
   backBar: {
+    position: "fixed",
+    top: { xs: "56px", sm: "64px" },
+    left: 0,
+    right: 0,
+    zIndex: 1000,
+    height: "44px",
     px: { xs: "1rem", md: "2.5rem" },
-    py: "0.75rem",
     display: "flex",
     alignItems: "center",
     gap: "0.5rem",
     borderBottom: "1px solid #F0EDE8",
-    bgcolor: "#FDFCFB",
+    bgcolor: "rgba(253, 252, 251, 0.96)",
+    backdropFilter: "blur(12px)",
+    boxSizing: "border-box",
   },
 
   backBtn: {
@@ -33,7 +40,8 @@ export const detailStyles = {
     maxWidth: "1400px",
     mx: "auto",
     px: { xs: "1rem", md: "2.5rem" },
-    py: { xs: "1.5rem", md: "2.5rem" },
+    pt: { xs: "calc(44px + 1.25rem)", md: "calc(44px + 2rem)" },
+    pb: { xs: "1.5rem", md: "2.5rem" },
     display: "grid",
     gridTemplateColumns: { xs: "1fr", lg: "1fr 360px" },
     gap: { xs: "2rem", lg: "3rem" },

@@ -31,7 +31,14 @@ export function Navbar() {
   };
 
   return (
-    <Box sx={{ ...styles.nav, ...(scrolled && styles.navScrolled) }}>
+    <Box
+      sx={{
+        ...styles.nav,
+        ...(scrolled && styles.navScrolled),
+     
+     
+      }}
+    >
       {/* ── Brand Logo ────────────────────────────────────────────────────── */}
       <Link href={`/${locale}`} style={{ textDecoration: "none" }}>
         <Box sx={styles.logo}>
