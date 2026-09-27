@@ -39,7 +39,7 @@ export function TestimonialsSection() {
                     <Typography sx={styles.role}>{t.role}</Typography>
                   </Box>
                 </Box>
-                <Typography sx={styles.quote}>"{t.quote}"</Typography>
+                <Typography sx={styles.quote}>&quot;{t.quote}&quot;</Typography>
               </Box>
             </Box>
           ))}

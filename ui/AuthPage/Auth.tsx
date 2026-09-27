@@ -206,9 +206,17 @@ export default function AuthPage() {
           <Typography sx={styles.progressText}>
             {step === "mobile" ? "Secure access" : "Almost there"}
           </Typography>
-          <Box sx={styles.progressDots} aria-label={`Step ${step === "mobile" ? 1 : 2} of 2`}>
+          <Box
+            sx={styles.progressDots}
+            aria-label={`Step ${step === "mobile" ? 1 : 2} of 2`}
+          >
             <Box sx={[styles.progressDot, styles.progressDotActive]} />
-            <Box sx={[styles.progressDot, step === "otp" && styles.progressDotActive]} />
+            <Box
+              sx={[
+                styles.progressDot,
+                step === "otp" && styles.progressDotActive,
+              ]}
+            />
           </Box>
         </Box>
         <Typography sx={styles.formLabel}>
@@ -345,7 +353,7 @@ export default function AuthPage() {
             </Button>
           </Box>
           <Typography sx={styles.footerText}>
-            By continuing, you agree to SoundBazaar's{" "}
+            By continuing, you agree to SoundBazaar&apos;s{" "}
             <Box component="span" sx={styles.footerLink}>
               Terms of Service
             </Box>{" "}
@@ -376,7 +384,9 @@ export default function AuthPage() {
 
           <Box sx={styles.resendRow}>
             <Typography sx={{ fontSize: "0.8rem", color: "#71717A" }}>
-              {canResend ? "Didn't receive code?" : `Resend code in ${resendTimer}s`}
+              {canResend
+                ? "Didn't receive code?"
+                : `Resend code in ${resendTimer}s`}
             </Typography>
             <Box
               component="button"

@@ -1,8 +1,10 @@
 export const styles = {
   nav: {
-    position: "sticky",
+    position: "fixed",
     top: 0,
-    zIndex: 100,
+    left: 0,
+    right: 0,
+    zIndex: 1100,
     height: { xs: "56px", sm: "64px" },
     display: "flex",
     alignItems: "center",
@@ -13,7 +15,6 @@ export const styles = {
     borderBottom: "1px solid rgba(196, 137, 58, 0.12)",
     transition: "0.2s ease",
     width: "100%",
-    maxWidth: "100vw",
     boxSizing: "border-box",
   },
 

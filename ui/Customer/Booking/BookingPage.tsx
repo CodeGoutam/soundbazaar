@@ -22,9 +22,13 @@ import {
   ServiceDetail,
 } from "@/types/ServiceDetail.types";
 import { SummaryCard } from "./SummaryCard/SummaryCard";
-import { getMinDate } from "@/lib/utils";
 import { DurationStepper } from "./DurationStepper/DurationStepper";
 import { bookingSchema } from "./BookingConfig";
+import {
+  DateInput,
+  TimeInput,
+} from "@/ui/components/DateTimeInput/DateTimeInput";
+import { BookingPageSkeleton } from "./BookingPageSkeleton";
 
 type FormData = z.infer<typeof bookingSchema>;
 
@@ -37,6 +41,7 @@ export default function BookingPage() {
 
   // TODO: replace with useQuery → GET /services/:serviceId
   const service: ServiceDetail = DUMMY_SERVICE_DETAIL;
+  const loading = false;
 
   const [durationHours, setDurationHours] = useState(service.min_hours);
   const [eventType, setEventType] = useState(service.event_types[0] ?? "");
@@ -46,7 +51,6 @@ export default function BookingPage() {
   const {
     control,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(bookingSchema),
@@ -69,7 +73,7 @@ export default function BookingPage() {
     [service, durationHours, distanceKm],
   );
 
-  const minDate = getMinDate(service.advance_notice_days);
+  if (loading) return <BookingPageSkeleton />;
 
   const onSubmit = async (data: FormData) => {
     if (!eventType) {
@@ -90,7 +94,9 @@ export default function BookingPage() {
       // TODO: useMutation → POST /bookings  { service_id, ...bookingPayload }
       console.log("booking payload", bookingPayload);
 
-      router.push(`/${locale}/bookings/confirmation?serviceId=${serviceId}&success=true`);
+      router.push(
+        `/${locale}/bookings/confirmation?serviceId=${serviceId}&success=true`,
+      );
     } catch (e) {
       console.error(e);
     } finally {
@@ -140,18 +146,12 @@ export default function BookingPage() {
                   control={control}
                   render={({ field }) => (
                     <Box>
-                      <Typography component="span" sx={s.fieldLabel}>
-                        Event date
-                      </Typography>
-                      <TextField
+                      <DateInput
                         {...field}
-                        type="date"
-                        size="small"
-                        fullWidth
-                        inputProps={{ min: minDate }}
+                        label="Event date"
+                        min={new Date().toISOString().split("T")[0]}
                         error={!!errors.event_date}
                         helperText={errors.event_date?.message}
-                        sx={{ "& input": { fontSize: "0.85rem" } }}
                       />
                     </Box>
                   )}
@@ -161,17 +161,11 @@ export default function BookingPage() {
                   control={control}
                   render={({ field }) => (
                     <Box>
-                      <Typography component="span" sx={s.fieldLabel}>
-                        Start time
-                      </Typography>
-                      <TextField
+                      <TimeInput
                         {...field}
-                        type="time"
-                        size="small"
-                        fullWidth
+                        label="Start time"
                         error={!!errors.event_start_time}
                         helperText={errors.event_start_time?.message}
-                        sx={{ "& input": { fontSize: "0.85rem" } }}
                       />
                     </Box>
                   )}
@@ -315,9 +309,6 @@ export default function BookingPage() {
               />
             </Box>
           </Box>
-
-          {/* Spacer for mobile sticky bar */}
-          <Box sx={{ display: { xs: "block", lg: "none" }, height: "90px" }} />
         </Box>
 
         {/* ── RIGHT: Summary ───────────────────────────────────────────────── */}
@@ -328,6 +319,9 @@ export default function BookingPage() {
           onSubmit={handleSubmit(onSubmit)}
           loading={submitting}
         />
+
+        {/* Keep the final content clear of the mobile sticky footer. */}
+        <Box sx={{ display: { xs: "block", lg: "none" }, height: "90px" }} />
       </Box>
 
       {/* ── Mobile sticky bottom bar ──────────────────────────────────────── */}

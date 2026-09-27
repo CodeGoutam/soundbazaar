@@ -13,6 +13,7 @@ import StarIcon from "@/components/Icons/StarIcon";
 import { ReviewCard } from "./ReviewCard/ReviewCard";
 import { BookingCard } from "./BookingCard/BookingCard";
 import { MediaCarousel } from "@/components/Media/MediaCarousel";
+import { ServiceDetailSkeleton } from "./ServiceDetailSkeleton";
 
 const TYPE_LABELS: Record<string, string> = {
   sound: "Sound System",
@@ -70,32 +71,44 @@ const ProviderDetails = ({ service }: { service: ServiceDetail }) => (
           {service.provider.business_name.charAt(0)}
         </Box>
         <Box sx={{ minWidth: 0 }}>
-          <Typography sx={{ fontSize: "0.95rem", fontWeight: 700, color: "#18181B" }}>
+          <Typography
+            sx={{ fontSize: "0.95rem", fontWeight: 700, color: "#18181B" }}
+          >
             {service.provider.business_name}
           </Typography>
           <Typography sx={{ fontSize: "0.78rem", color: "#7A756F" }}>
             {service.provider.owner_name} · {service.provider.city}
           </Typography>
-          <Typography sx={{ fontSize: "0.72rem", color: "#B0AAA3", mt: "0.1rem" }}>
+          <Typography
+            sx={{ fontSize: "0.72rem", color: "#B0AAA3", mt: "0.1rem" }}
+          >
             Member since {service.provider.member_since}
           </Typography>
         </Box>
       </Box>
       <Box sx={s.providerStatGrid}>
         <Box sx={s.providerStat}>
-          <Typography sx={s.providerStatVal}>{service.provider.average_rating.toFixed(1)} ★</Typography>
+          <Typography sx={s.providerStatVal}>
+            {service.provider.average_rating.toFixed(1)} ★
+          </Typography>
           <Typography sx={s.providerStatLbl}>Avg rating</Typography>
         </Box>
         <Box sx={s.providerStat}>
-          <Typography sx={s.providerStatVal}>{service.provider.total_bookings}</Typography>
+          <Typography sx={s.providerStatVal}>
+            {service.provider.total_bookings}
+          </Typography>
           <Typography sx={s.providerStatLbl}>Total bookings</Typography>
         </Box>
         <Box sx={s.providerStat}>
-          <Typography sx={s.providerStatVal}>{service.provider.total_services}</Typography>
+          <Typography sx={s.providerStatVal}>
+            {service.provider.total_services}
+          </Typography>
           <Typography sx={s.providerStatLbl}>Services listed</Typography>
         </Box>
         <Box sx={s.providerStat}>
-          <Typography sx={s.providerStatVal}>{service.advance_notice_days}d</Typography>
+          <Typography sx={s.providerStatVal}>
+            {service.advance_notice_days}d
+          </Typography>
           <Typography sx={s.providerStatLbl}>Advance notice</Typography>
         </Box>
       </Box>
@@ -116,7 +129,9 @@ const ReviewsSection = ({ service }: { service: ServiceDetail }) => (
         <Typography sx={s.sectionTitle}>Reviews</Typography>
         <Box sx={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
           <StarIcon size={13} fill="#C4893A" />
-          <Typography sx={{ fontSize: "0.8rem", fontWeight: 700, color: "#18181B" }}>
+          <Typography
+            sx={{ fontSize: "0.8rem", fontWeight: 700, color: "#18181B" }}
+          >
             {service.average_rating.toFixed(1)}
           </Typography>
           <Typography sx={{ fontSize: "0.75rem", color: "#B0AAA3" }}>
@@ -157,7 +172,7 @@ export default function ServiceDetailPage() {
     router.push(`/${locale}/book/${service.id}`);
   };
 
-  if (loading) return null; // TODO: add skeleton
+  if (loading) return <ServiceDetailSkeleton />;
 
   return (
     <Box sx={s.root}>

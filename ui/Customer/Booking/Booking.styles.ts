@@ -3,13 +3,20 @@ export const bookingStyles = {
 
   // ── Back bar ─────────────────────────────────────────────────────────────────
   backBar: {
+    position: "fixed",
+    top: { xs: "56px", sm: "64px" },
+    left: 0,
+    right: 0,
+    zIndex: 1000,
+    height: "44px",
     px: { xs: "1rem", md: "2.5rem" },
-    py: "0.75rem",
     display: "flex",
     alignItems: "center",
     gap: "0.5rem",
     borderBottom: "1px solid #F0EDE8",
-    bgcolor: "#FDFCFB",
+    bgcolor: "rgba(253, 252, 251, 0.96)",
+    backdropFilter: "blur(12px)",
+    boxSizing: "border-box",
   },
 
   backBtn: {
@@ -31,7 +38,8 @@ export const bookingStyles = {
     maxWidth: "1400px",
     mx: "auto",
     px: { xs: "1rem", md: "2.5rem" },
-    py: { xs: "1.5rem", md: "2.5rem" },
+    pt: { xs: "calc(44px + 1.25rem)", md: "calc(44px + 2rem)" },
+    pb: { xs: "1.5rem", md: "2.5rem" },
     display: "grid",
     gridTemplateColumns: { xs: "1fr", lg: "1fr 340px" },
     gap: { xs: "2rem", lg: "2.5rem" },
@@ -91,7 +99,8 @@ export const bookingStyles = {
 
   stepLabel: (active: boolean) => ({
     fontSize: "0.75rem",
-    fontWeight: active ? 600 : 400,
+    // Keep text metrics stable so changing selection never reflows the chip row.
+    fontWeight: 500,
     color: active ? "#18181B" : "#B0AAA3",
     whiteSpace: "nowrap",
   }),
@@ -176,7 +185,7 @@ export const bookingStyles = {
 
   eventChip: (active: boolean) => ({
     fontSize: "0.75rem",
-    fontWeight: active ? 600 : 400,
+    fontWeight: active ? 500 : 400,
     borderRadius: "20px",
     px: "0.75rem",
     py: "0.3rem",

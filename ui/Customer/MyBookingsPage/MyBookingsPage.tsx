@@ -15,12 +15,17 @@ import { bookingsStyles as s } from "./MyBookings.styles";
 import { DUMMY_BOOKINGS, BookingStatus } from "./dummyBookings";
 import { formateDate } from "@/lib/utils";
 
+import { MyBookingsSkeleton } from "./MyBookingsSkeleton";
+
 // ─── Main page ────────────────────────────────────────────────────────────────
 export default function MyBookingsPage() {
   const router = useRouter();
   const { locale } = useParams() as { locale: string };
+  const loading = false;
 
   const [activeTab, setActiveTab] = useState<BookingStatus | "all">("all");
+
+  if (loading) return <MyBookingsSkeleton />;
 
   const filteredBookings = DUMMY_BOOKINGS.filter((b) =>
     activeTab === "all" ? true : b.status === activeTab,
@@ -164,7 +169,7 @@ export default function MyBookingsPage() {
               <BookmarkBorder sx={s.emptyIcon} />
               <Typography sx={s.emptyTitle}>No bookings found</Typography>
               <Typography sx={s.emptySub}>
-                You haven't made any bookings in this category yet.
+                You haven&apos;t made any bookings in this category yet.
               </Typography>
               <Button
                 startIcon={<Search />}

@@ -116,11 +116,17 @@ export default function GenericTable<T extends { id: string | number }>({
         </TableHead>
         <TableBody>
           {loading ? (
-            [1, 2, 3].map((i) => (
+            [1, 2, 3, 4].map((i) => (
               <TableRow key={i}>
-                {columns.map((_, j) => (
+                {columns.map((col, j) => (
                   <TableCell key={j} sx={BODY_CELL_SX}>
-                    <Skeleton />
+                    <Skeleton
+                      animation="wave"
+                      height={20}
+                      width={
+                        j === 0 ? "80%" : j === columns.length - 1 ? 70 : "60%"
+                      }
+                    />
                   </TableCell>
                 ))}
               </TableRow>
