@@ -1,82 +1,104 @@
-import { SxProps, Theme } from "@mui/material";
-
-type MobileCardStyles = {
-  container: SxProps<Theme>;
-  headerBox: SxProps<Theme>;
-  eventType: SxProps<Theme>;
-  eventMeta: SxProps<Theme>;
-  location: SxProps<Theme>;
-  statusChip: (cfg: { bg?: string; color?: string }) => SxProps<Theme>;
-  divider: SxProps<Theme>;
-  footerBox: SxProps<Theme>;
-  statsGroup: SxProps<Theme>;
-  statLabel: SxProps<Theme>;
-  totalValue: SxProps<Theme>;
-  earnValue: SxProps<Theme>;
-  callButton: SxProps<Theme>;
-  callDoneBox: SxProps<Theme>;
-  callDoneText: SxProps<Theme>;
-};
-
-export const styles: MobileCardStyles = {
+export const styles = {
   container: {
-    border: "1px solid #E8E4DE",
-    borderRadius: "10px",
+    border: "1px solid #EBE7E0",
+    borderRadius: "14px",
     p: "1.1rem",
-    mb: "0.75rem",
-    bgcolor: "#FDFCFB",
+    mb: "0.85rem",
+    bgcolor: "#FFFFFF",
+    boxShadow: "0 2px 6px rgba(24, 24, 27, 0.03)",
+    transition: "border-color 0.2s, box-shadow 0.2s",
+    "&:hover": {
+      borderColor: "#D9D4CD",
+      boxShadow: "0 4px 14px rgba(24, 24, 27, 0.05)",
+    },
   },
   headerBox: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    gap: "0.5rem",
-    mb: "0.75rem",
+    gap: "0.75rem",
+    mb: "0.85rem",
+  },
+  clientGroup: {
+    display: "flex",
+    gap: "0.65rem",
+    alignItems: "flex-start",
+    minWidth: 0,
+  },
+  avatar: {
+    width: 38,
+    height: 38,
+    borderRadius: "10px",
+    bgcolor: "rgba(196, 137, 58, 0.12)",
+    color: "#C4893A",
+    fontWeight: 700,
+    fontSize: "0.82rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+    border: "1px solid rgba(196, 137, 58, 0.2)",
   },
   eventType: {
-    fontSize: "0.9rem",
-    fontWeight: 600,
+    fontSize: "0.92rem",
+    fontWeight: 700,
     color: "#18181B",
     fontFamily: "Fraunces, Georgia, serif",
+    lineHeight: 1.2,
+  },
+  customerName: {
+    fontSize: "0.76rem",
+    fontWeight: 600,
+    color: "#44403C",
+    mt: "0.15rem",
   },
   eventMeta: {
-    fontSize: "0.75rem",
-    color: "#7A756F",
-    mt: "0.1rem",
+    fontSize: "0.72rem",
+    color: "#78716C",
+    mt: "0.15rem",
+    display: "flex",
+    alignItems: "center",
+    gap: "0.3rem",
   },
   location: {
     fontSize: "0.72rem",
-    color: "#B0AAA3",
-    mt: "0.05rem",
+    color: "#A8A29E",
+    mt: "0.1rem",
+    display: "flex",
+    alignItems: "center",
+    gap: "0.25rem",
   },
-  statusChip: (cfg) => ({
-    bgcolor: cfg?.bg,
-    color: cfg?.color,
+  statusChip: (cfg: { bg?: string; color?: string }) => ({
+    bgcolor: cfg?.bg ?? "#F5F3EF",
+    color: cfg?.color ?? "#18181B",
     fontWeight: 600,
-    fontSize: "0.66rem",
-    height: 22,
+    fontSize: "0.68rem",
+    height: 24,
     borderRadius: "20px",
     flexShrink: 0,
+    border: `1px solid ${cfg?.color ? `${cfg.color}30` : "#E8E4DE"}`,
   }),
   divider: {
     borderColor: "#F0EDE8",
-    mb: "0.75rem",
+    my: "0.75rem",
   },
   footerBox: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
     gap: "0.5rem",
+    flexWrap: "wrap",
   },
   statsGroup: {
     display: "flex",
-    gap: "1.5rem",
+    gap: "1.25rem",
   },
   statLabel: {
     fontSize: "0.62rem",
-    color: "#B0AAA3",
-    textTransform: "uppercase",
-    letterSpacing: "0.1em",
+    color: "#A8A29E",
+    textTransform: "uppercase" as const,
+    letterSpacing: "0.08em",
+    fontWeight: 600,
     mb: "0.1rem",
   },
   totalValue: {
@@ -91,27 +113,54 @@ export const styles: MobileCardStyles = {
     fontWeight: 700,
     color: "#16a34a",
   },
+  actionsGroup: {
+    display: "flex",
+    alignItems: "center",
+    gap: "0.5rem",
+  },
   callButton: {
-    fontSize: "0.71rem",
-    fontWeight: 500,
-    color: "#C4893A",
-    border: "1px solid rgba(196,137,58,0.35)",
-    borderRadius: "6px",
-    px: "0.7rem",
-    py: "0.3rem",
-    textTransform: "none",
-    bgcolor: "rgba(196,137,58,0.06)",
+    fontSize: "0.72rem",
+    fontWeight: 600,
+    color: "#FFFFFF",
+    bgcolor: "#C4893A",
+    borderRadius: "8px",
+    px: "0.85rem",
+    py: "0.35rem",
+    textTransform: "none" as const,
+    boxShadow: "0 2px 6px rgba(196, 137, 58, 0.25)",
     flexShrink: 0,
-    "&:hover": { bgcolor: "rgba(196,137,58,0.12)" },
+    "&:hover": {
+      bgcolor: "#B37930",
+    },
   },
   callDoneBox: {
     display: "flex",
     alignItems: "center",
     gap: "0.3rem",
+    bgcolor: "rgba(22, 163, 74, 0.08)",
+    border: "1px solid rgba(22, 163, 74, 0.2)",
+    borderRadius: "6px",
+    px: "0.55rem",
+    py: "0.25rem",
   },
   callDoneText: {
-    fontSize: "0.71rem",
+    fontSize: "0.7rem",
     color: "#16a34a",
+    fontWeight: 600,
+  },
+  detailsBtn: {
+    fontSize: "0.72rem",
     fontWeight: 500,
+    color: "#78716C",
+    borderRadius: "8px",
+    border: "1px solid #E8E4DE",
+    px: "0.65rem",
+    py: "0.35rem",
+    textTransform: "none" as const,
+    "&:hover": {
+      bgcolor: "#F7F5F2",
+      borderColor: "#D9D4CD",
+      color: "#18181B",
+    },
   },
 };

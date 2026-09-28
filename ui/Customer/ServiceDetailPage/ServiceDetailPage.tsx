@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { Box, Typography, Button } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
@@ -14,6 +15,7 @@ import { ReviewCard } from "./ReviewCard/ReviewCard";
 import { BookingCard } from "./BookingCard/BookingCard";
 import { MediaCarousel } from "@/components/Media/MediaCarousel";
 import { ServiceDetailSkeleton } from "./ServiceDetailSkeleton";
+import { DUMMY_SERVICES } from "@/types/Search.types";
 
 const TYPE_LABELS: Record<string, string> = {
   sound: "Sound System",
@@ -159,10 +161,50 @@ const ReviewsSection = ({ service }: { service: ServiceDetail }) => (
 // ─── Main page ─────────────────────────────────────────────────────────────────
 export default function ServiceDetailPage() {
   const router = useRouter();
-  const { locale } = useParams() as { locale: string };
+  const { locale, serviceId } = useParams() as {
+    locale: string;
+    serviceId?: string;
+  };
 
-  // TODO: replace with useQuery → GET /services/:serviceId
-  const service: ServiceDetail = DUMMY_SERVICE_DETAIL;
+  const matched = DUMMY_SERVICES.find((s) => s.id === serviceId);
+  const service: ServiceDetail = useMemo(() => {
+    if (!matched) return DUMMY_SERVICE_DETAIL;
+    return {
+      ...DUMMY_SERVICE_DETAIL,
+      id: matched.id,
+      service_name: matched.service_name,
+      description: matched.description,
+      equipment_type: matched.equipment_type,
+      base_price: matched.base_price,
+      min_hours: matched.min_hours,
+      extra_hour_rate: matched.extra_hour_rate,
+      max_capacity: matched.max_capacity,
+      event_types: matched.event_types,
+      image_url: matched.image_url ?? DUMMY_SERVICE_DETAIL.image_url,
+      advance_notice_days: matched.advance_notice_days,
+      media: matched.image_url
+        ? [
+            {
+              id: "main-1",
+              type: "image",
+              url: matched.image_url,
+              title: matched.service_name,
+            },
+            ...(DUMMY_SERVICE_DETAIL.media ?? []).slice(1),
+          ]
+        : DUMMY_SERVICE_DETAIL.media,
+      provider: {
+        ...DUMMY_SERVICE_DETAIL.provider,
+        id: matched.provider.id,
+        business_name: matched.provider.business_name,
+        owner_name: matched.provider.owner_name,
+        city: matched.provider.city,
+        average_rating: matched.provider.average_rating,
+        total_bookings: matched.provider.total_bookings,
+      },
+    };
+  }, [matched]);
+
   const loading = false;
 
   const goBack = () => {
