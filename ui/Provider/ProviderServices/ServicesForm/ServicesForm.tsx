@@ -186,6 +186,7 @@ export default function ServiceForm({
                     label="Service name"
                     size="small"
                     fullWidth
+                    required
                     placeholder='e.g. "Wedding DJ Package"'
                     error={!!errors.service_name}
                     helperText={errors.service_name?.message}
@@ -205,6 +206,7 @@ export default function ServiceForm({
                     fullWidth
                     multiline
                     rows={3}
+                    required
                     placeholder="List your equipment: brands, power output, speakers, mixer, lights included..."
                     error={!!errors.description}
                     helperText={errors.description?.message}
@@ -215,7 +217,7 @@ export default function ServiceForm({
               {/* Event types */}
               <Box>
                 <Typography component="span" sx={s.fieldLabel}>
-                  Event types
+                  Event types *
                 </Typography>
                 <Box sx={s.eventChips}>
                   {EVENT_TYPES.map((t) => (
@@ -245,10 +247,11 @@ export default function ServiceForm({
                   <FormControl
                     size="small"
                     fullWidth
+                    required
                     error={!!errors.max_capacity}
                   >
                     <Typography component="span" sx={s.fieldLabel}>
-                      Max guest capacity
+                      Max guest capacity *
                     </Typography>
                     <Select {...field} displayEmpty>
                       {CAPACITY_OPTIONS.map((c) => (
@@ -287,6 +290,7 @@ export default function ServiceForm({
                         label="Base price (₹)"
                         size="small"
                         type="number"
+                        required
                         inputProps={{ min: 0 }}
                         error={!!errors.base_price}
                         helperText={
@@ -305,6 +309,7 @@ export default function ServiceForm({
                         label="Minimum hours"
                         size="small"
                         type="number"
+                        required
                         inputProps={{ min: 1, max: 24 }}
                         error={!!errors.min_hours}
                         helperText={
@@ -326,6 +331,7 @@ export default function ServiceForm({
                         label="Extra hour rate (₹)"
                         size="small"
                         type="number"
+                        required
                         inputProps={{ min: 0 }}
                         error={!!errors.extra_hour_rate}
                         helperText={
@@ -345,6 +351,7 @@ export default function ServiceForm({
                         label="Max hours / day"
                         size="small"
                         type="number"
+                        required
                         inputProps={{ min: 1, max: 24 }}
                         error={!!errors.max_hours}
                         helperText={
@@ -435,7 +442,7 @@ export default function ServiceForm({
                 {/* Available days */}
                 <Box>
                   <Typography component="span" sx={s.fieldLabel}>
-                    Available days
+                    Available days *
                   </Typography>
                   <Box sx={s.dayChips}>
                     {DAYS_OF_WEEK.map((d) => (
@@ -473,6 +480,7 @@ export default function ServiceForm({
                       size="small"
                       fullWidth
                       type="number"
+                      required
                       inputProps={{ min: 0, max: 30 }}
                       error={!!errors.advance_notice_days}
                       helperText={

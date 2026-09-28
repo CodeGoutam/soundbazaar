@@ -304,6 +304,7 @@ export default function AuthPage() {
                     label="Mobile number"
                     type="tel"
                     placeholder="Enter 10-digit number"
+                    required
                     error={!!fieldState.error}
                     helperText={fieldState.error?.message}
                     inputProps={{ maxLength: 10, inputMode: "numeric" }}

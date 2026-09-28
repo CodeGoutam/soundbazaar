@@ -148,8 +148,9 @@ export default function BookingPage() {
                     <Box>
                       <DateInput
                         {...field}
-                        label="Event date"
+                        label="Event date *"
                         min={new Date().toISOString().split("T")[0]}
+                        required
                         error={!!errors.event_date}
                         helperText={errors.event_date?.message}
                       />
@@ -163,7 +164,8 @@ export default function BookingPage() {
                     <Box>
                       <TimeInput
                         {...field}
-                        label="Start time"
+                        label="Start time *"
+                        required
                         error={!!errors.event_start_time}
                         helperText={errors.event_start_time?.message}
                       />
@@ -201,7 +203,7 @@ export default function BookingPage() {
               {/* Event type */}
               <Box>
                 <Typography component="span" sx={s.fieldLabel}>
-                  Event type
+                  Event type *
                 </Typography>
                 <Box sx={s.eventChips}>
                   {service.event_types.map((t) => (
@@ -241,13 +243,14 @@ export default function BookingPage() {
                 render={({ field }) => (
                   <Box>
                     <Typography component="span" sx={s.fieldLabel}>
-                      Full address
+                      Full address *
                     </Typography>
                     <TextField
                       {...field}
                       size="small"
                       fullWidth
                       placeholder="House/Flat no., Street, Area, Landmark"
+                      required
                       error={!!errors.event_address}
                       helperText={
                         errors.event_address?.message ??
@@ -266,13 +269,14 @@ export default function BookingPage() {
                 render={({ field }) => (
                   <Box>
                     <Typography component="span" sx={s.fieldLabel}>
-                      City
+                      City *
                     </Typography>
                     <TextField
                       {...field}
                       size="small"
                       fullWidth
                       placeholder="e.g. Gurugram"
+                      required
                       error={!!errors.event_city}
                       helperText={errors.event_city?.message}
                     />
